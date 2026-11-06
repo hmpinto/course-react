@@ -44,10 +44,15 @@ You'll need [Node.js](https://nodejs.org/), which includes npm. Then, from the f
 
 ```bash
 npm install
-npm run dev
+npm run dev   # projects created with Vite
+npm start     # projects created with Create React App (part1/courseinfo, part1/unicafe)
 ```
 
-Some projects may use a different start command. Check the `scripts` section of each project's `package.json`.
+If in doubt, check the `scripts` section of the project's `package.json`.
+
+## Editor setup
+
+Code is formatted with [Prettier](https://prettier.io/) (config in `.prettierrc`). The `.vscode/settings.json` file enables format on save in VS Code. To use it, install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extensions.
 
 ## Acknowledgments
 
