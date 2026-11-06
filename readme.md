@@ -9,8 +9,8 @@ The course focuses on building single-page applications with React that use REST
 | Status | Part | Topic |
 | ------ | ---- | ----- |
 | ✅ | [0](https://fullstackopen.com/en/part0) | Fundamentals of web apps |
-| 🟨 | [1](https://fullstackopen.com/en/part1) | Introduction to React |
-| ⬜ | [2](https://fullstackopen.com/en/part2) | Communicating with server |
+| ✅ | [1](https://fullstackopen.com/en/part1) | Introduction to React |
+| 🟨 | [2](https://fullstackopen.com/en/part2) | Communicating with server |
 | ⬜ | [3](https://fullstackopen.com/en/part3) | Programming a server with Node.js and Express |
 | ⬜ | [4](https://fullstackopen.com/en/part4) | Testing Express servers, user administration |
 | ⬜ | [5](https://fullstackopen.com/en/part5) | Testing React apps, React Router |
