@@ -1,5 +1,15 @@
 import { useState } from 'react'
 
+const Anecdote = ({ title, anecdote, votes }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{anecdote}</p>
+      <p>has {votes} votes</p>
+    </div>
+  )
+}
+
 const Generator = ({ setSelected, total }) => {
   return (
     <button
@@ -31,6 +41,7 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
+  const posHigh = votes.indexOf(Math.max(...votes))
 
   const addLike = () => {
     const copy = [...votes]
@@ -40,12 +51,20 @@ const App = () => {
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {votes[selected]} votes</p>
+      <Anecdote
+        title="Anecdote of the day"
+        anecdote={anecdotes[selected]}
+        votes={votes[selected]}
+      />
       <div>
         <Generator setSelected={setSelected} total={anecdotes.length} />
         <Like addLike={addLike} />
       </div>
+      <Anecdote
+        title="Anecdote with most votes"
+        anecdote={anecdotes[posHigh]}
+        votes={votes[posHigh]}
+      />
     </div>
   )
 }
