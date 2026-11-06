@@ -45,7 +45,7 @@ You'll need [Node.js](https://nodejs.org/), which includes npm. Then, from the f
 ```bash
 npm install
 npm run dev   # projects created with Vite
-npm start     # projects created with Create React App (part1/courseinfo, part1/unicafe)
+npm start     # projects created with Create React App (part1/courseinfo, part1/unicafe, part2/courseinfo)
 ```
 
 If in doubt, check the `scripts` section of the project's `package.json`.
