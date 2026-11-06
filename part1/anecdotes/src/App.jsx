@@ -2,17 +2,19 @@ import { useState } from 'react'
 
 const Generator = ({ setSelected, total }) => {
   return (
-    <div>
-      <button
-        onClick={() => {
-          const nRand = Math.floor(Math.random() * total)
-          setSelected(nRand)
-        }}
-      >
-        New
-      </button>
-    </div>
+    <button
+      onClick={() => {
+        const nRand = Math.floor(Math.random() * total)
+        setSelected(nRand)
+      }}
+    >
+      Next
+    </button>
   )
+}
+
+const Like = ({ addLike }) => {
+  return <button onClick={addLike}>Like</button>
 }
 
 const App = () => {
@@ -28,12 +30,21 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
+
+  const addLike = () => {
+    const copy = [...votes]
+    copy[selected] += 1
+    setVotes(copy)
+  }
 
   return (
     <div>
       <p>{anecdotes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
       <div>
         <Generator setSelected={setSelected} total={anecdotes.length} />
+        <Like addLike={addLike} />
       </div>
     </div>
   )
