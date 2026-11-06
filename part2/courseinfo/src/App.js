@@ -1,33 +1,41 @@
-const Header = (props) => {
+const Header = ({ data }) => {
+  return <h1>{data.name}</h1>
+}
+
+const ContentPart = ({ name, exercises }) => {
   return (
-    <h1>{props.data.name}</h1>
+    <p>
+      {name} {exercises}
+    </p>
   )
 }
 
-const Content = (props) => {
-  const ContentPart = (props) => {
-    return (
-      <p>
-        {props.name} {props.exercises}
-      </p>
-    )
-  }
-  
+const Content = ({ data }) => {
   return (
     <div>
-      <ContentPart name={props.data.parts[0].name} exercises={props.data.parts[0].exercises} />
-      <ContentPart name={props.data.parts[1].name} exercises={props.data.parts[1].exercises} />
-      <ContentPart name={props.data.parts[2].name} exercises={props.data.parts[2].exercises} />
+      {data.parts.map((part) => (
+        <ContentPart
+          key={part.id}
+          name={part.name}
+          exercises={part.exercises}
+        />
+      ))}
     </div>
   )
 }
 
-const Total = (props) => {
-  const total = props.data.parts.reduce((sum, elem) => sum + elem.exercises, 0)
+const Total = ({ data }) => {
+  const total = data.parts.reduce((sum, elem) => sum + elem.exercises, 0)
+  return <p>Number of exercises {total}</p>
+}
+
+const Course = ({ course }) => {
   return (
-    <p>
-      Number of exercises {total}
-    </p>
+    <div>
+      <Header data={course} />
+      <Content data={course} />
+      <Total data={course} />
+    </div>
   )
 }
 
@@ -36,27 +44,24 @@ const App = () => {
     name: 'Half Stack application development',
     parts: [
       {
-        name : 'Fundamentals of React',
-        exercises : 10
+        name: 'Fundamentals of React',
+        id: 1,
+        exercises: 10,
       },
       {
-        name : 'Using props to pass data',
-        exercises : 7
+        name: 'Using props to pass data',
+        id: 2,
+        exercises: 7,
       },
       {
-        name : 'State of a component',
-        exercises : 14
-      }
-    ]
+        name: 'State of a component',
+        id: 3,
+        exercises: 14,
+      },
+    ],
   }
-  
-  return (
-    <div>
-      <Header data={course} />
-      <Content data={course} />
-      <Total data={course} />
-    </div>
-  )
+
+  return <Course course={course} />
 }
 
 export default App
